@@ -1,0 +1,41 @@
+<div class="container justify-content-center mt-3">
+  <div class="card shadow col-12 bg-dark text-white">
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Sıra</th>
+            <th>Avatar</th>
+            <th>Kullanıcı Adı</th>
+            <th class="text-center">Mesaj Sayısı</th>
+            <th class="text-center">Seste Geçirilen Süre</th>
+            <th class="text-center">Seviye</th>
+            <th class="text-center">Tecrübe Puanı</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let member of members">
+          <td class="col-1"> <span class="position" [ngClass]="{'first': member.position == 1, 'second': member.position == 2, 'third': member.position == 3}">{{ member.position }}</span> </td>
+          <td class="col-1 justify-content-center align-items-center"> <img src="{{member.avatarUrl}}" /> </td>
+          <td class="col-3">{{ member.username }}#{{ member.discriminator }}</td>
+          <td class="col-2 text-center">TBA</td>
+          <td class="col-2 text-center">TBA</td>
+          <td class="col-1 justify-content-center">
+            <div class="percent">
+              <svg>
+                <circle class="circle-bg"
+                  [attr.cx]="this.size / 2" [attr.cy]="this.size / 2" [attr.r]="this.radius" stroke="white" [attr.stroke-width]="this.strokeWidth" fill="transparent"></circle>
+                <circle class="circle" stroke="#8B7BFF" [attr.stroke-dasharray]="this.circumference" [attr.stroke-dashoffset]="calculateProgress(member)"
+                        [attr.cx]="this.size / 2" [attr.cy]="this.size / 2" [attr.r]="this.radius" [attr.stroke-width]="this.strokeWidth" fill="transparent"></circle>
+
+                <text class="level" [attr.x]="this.size / 2" [attr.y]="this.size / 2">{{ member.currentLevel.level }}</text>
+              </svg>
+            </div>
+          </td>
+          <td class="col-2 text-center">{{ member.getExperiencePointString() }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

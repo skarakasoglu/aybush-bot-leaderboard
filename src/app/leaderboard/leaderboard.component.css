@@ -1,0 +1,90 @@
+div{
+  padding: 0;
+}
+
+div.card{
+  margin-bottom: 50px;
+}
+
+table{
+  width: 100%;
+  padding: 20px;
+}
+
+td, th{
+  padding: 5px 0 5px 0;
+}
+
+thead tr{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+}
+
+tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 400;
+  height: 80px;
+}
+
+td:first-child, th:first-child{
+  padding-left: 15px;
+}
+
+tr:last-child{
+  border-bottom: none;
+}
+
+span.position{
+  text-align: center;
+  vertical-align: center;
+  background-color: #36393F;
+  display: block;
+  border-radius: 50%;
+  font-size: 14px;
+  padding: 5px;
+  width: 32px;
+  height: 32px;
+}
+
+span.position.first{
+  background-color: #FFD700;
+}
+
+span.position.second{
+  background-color: #C0C0C0;
+}
+
+span.position.third{
+  background-color: #cd7f32;
+}
+
+img{
+  border-radius: 50%;
+  width: 54px;
+}
+
+.percent{
+  padding: 10px;
+}
+
+.percent svg{
+  display: block;
+  max-width: 100%;
+  max-height: 80px;
+}
+
+.percent svg .circle-bg{
+  fill: none;
+}
+
+.percent svg .circle{
+  fill: none;
+}
+
+.percent .level{
+  font-size: 1.3rem;
+  text-align: center;
+  text-anchor: middle;
+  fill: #fff;
+  font-weight: bold;
+}
