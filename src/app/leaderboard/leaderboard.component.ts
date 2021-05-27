@@ -27,12 +27,13 @@ export class LeaderboardComponent implements OnInit {
     this.leaderboardService.getLeaderboard().subscribe((observer : any) => {
       observer.member_levels.forEach(ml => {
         let member = new LeaderboardMember(ml.member_id, ml.avatar_url, ml.username, ml.discriminator,
-          ml.joined_at, new Level(ml.current_level.level, ml.current_level.required_experience_points), new Level(ml.next_level.level, ml.next_level.required_experience_points),
+          ml.message_count, ml.active_voice_minutes,
+          ml.joined_at, new Level(ml.current_level.level, ml.current_level.required_experience_points),
+          new Level(ml.next_level.level, ml.next_level.required_experience_points),
           ml.experience_points, ml.role_name, ml.position);
         this.members.push(member);
       });
 
-      console.log(this.members);
     }, error => {
       console.log(error);
     });
@@ -43,7 +44,6 @@ export class LeaderboardComponent implements OnInit {
     let memberProgress = member.experiencePoints - member.currentLevel.requiredExperiencePoints;
     let memberProgressPercentage = (memberProgress / wholeProgress) * 100;
 
-    console.log(((100 - memberProgressPercentage) / 100) * this.circumference);
     return ((100 - memberProgressPercentage) / 100) * this.circumference;
   }
 

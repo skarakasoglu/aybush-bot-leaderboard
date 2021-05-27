@@ -18,8 +18,8 @@
           <td class="col-1"> <span class="position" [ngClass]="{'first': member.position == 1, 'second': member.position == 2, 'third': member.position == 3}">{{ member.position }}</span> </td>
           <td class="col-1 justify-content-center align-items-center"> <img src="{{member.avatarUrl}}" /> </td>
           <td class="col-3">{{ member.username }}#{{ member.discriminator }}</td>
-          <td class="col-2 text-center">TBA</td>
-          <td class="col-2 text-center">TBA</td>
+          <td class="col-2 text-center">{{ member.getMessageCountString() }}</td>
+          <td class="col-2 text-center">{{ member.getHourString() }}</td>
           <td class="col-1 justify-content-center">
             <div class="percent">
               <svg>
