@@ -1,0 +1,10 @@
+version: '3.2'
+services:
+  aybush_bot_leaderboard:
+    container_name: AybushBotLeaderboardWeb
+    build: .
+    image: skarakasoglu/aybush-bot-leaderboard-web:1.0.0
+    restart: always
+    ports:
+    - "8070:80"
+
