@@ -9,13 +9,20 @@
               <img src="{{ member.avatarUrl }}" alt="">
             </div>
             <div class="moreData col-4">
-              <div class="row data">
-                <div class="col-12 username">
+              <div class="row data flex-row justify-content-start" style="margin-left: 0">
+                <div class="w-75 col-12 username">
                   <h5> <span class="badg" [ngClass]="{'first': member.position == 1, 'second': member.position == 2, 'third': member.position == 3,
-                  'normal': member.position != 1 && member.position != 2 && member.position != 3}">{{ member.position }}.</span> {{member.username}}#{{member.discriminator}}</h5>
+                  'normal': member.position != 1 && member.position != 2 && member.position != 3}">{{ member.position }}.</span> {{member.username}}#{{member.discriminator}}
+                  </h5>
                 </div>
+
+                <ng-container *ngIf="member.position <= memberMedals.length">
+                    <span class="w-25 p-0 m-0 d-block text-end fs-4">
+                      {{ memberMedals[member.position - 1] }}
+                    </span>
+                </ng-container>
               </div>
-              <div style="width: {{calculateLevelWidth(member) + '%'}};" class="line" [ngClass]="{'first-bg': member.position == 1, 'second-bg': member.position == 2, 'third-bg': member.position == 3,
+              <div [style.width]="calculateLevelWidth(member) + '%'" class="line" [ngClass]="{'first-bg': member.position == 1, 'second-bg': member.position == 2, 'third-bg': member.position == 3,
               'normal-bg': member.position != 1 && member.position != 2 && member.position != 3}"></div>
             </div>
             <div class="level col">

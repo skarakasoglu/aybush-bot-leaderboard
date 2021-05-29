@@ -10,6 +10,8 @@ import {Level} from "../models/level";
 })
 export class LeaderboardComponent implements OnInit {
 
+  memberMedals = ["🥇", "🥈", "🥉"]
+
   strokeWidth: number = 3;
   size: number = 70;
   radius: number;
