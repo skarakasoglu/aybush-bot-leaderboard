@@ -53,32 +53,32 @@
 .photo img{
   margin-top:10px ;
   height: 50px;
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .photo{
-  height: 60px;
+  height: 100%;
 }
 
 .moreData{
-  height: 60px;
+  height: 100%;
 }
 
 .level{
-  height: 65px;
+  height: 100%;
 }
 
 .numberOfMessages{
-  height: 60px;
+  height: 100%;
 }
 
 .soundDuration{
-  height: 60px;
+  height: 100%;
 }
 
 .user {
   margin-top: 20px;
-  height: 65px;
+  height: 70px;
 }
 
 .data {

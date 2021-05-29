@@ -22,7 +22,7 @@ export class LeaderboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.radius = 25;
+    this.radius = this.size / 2 - this.strokeWidth / 2;
     this.circumference = Math.PI * 2 * this.radius;
 
     this.leaderboardService.getLeaderboard().subscribe((observer : any) => {
