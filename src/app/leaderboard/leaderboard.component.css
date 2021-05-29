@@ -81,6 +81,10 @@
   height: 70px;
 }
 
+.row {
+  height: 100%;
+}
+
 .data {
   height: 45px;
   width: 100%;
@@ -110,7 +114,7 @@
 .tpChart {
   margin: auto;
   display: block;
-  max-width: 50%;
+  max-width: 60%;
   max-height: 100%;
 }
 
