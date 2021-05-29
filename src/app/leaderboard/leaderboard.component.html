@@ -15,11 +15,16 @@
                   'normal': member.position != 1 && member.position != 2 && member.position != 3}">{{ member.position }}.</span> {{member.username}}#{{member.discriminator}}
                   </h5>
                 </div>
-
-                <ng-container *ngIf="member.position <= memberMedals.length">
-                    <span style="width: 10%" class="p-0 m-0 d-block text-end fs-4">
-                      {{ memberMedals[member.position - 1] }}
-                    </span>
+                <ng-container *ngIf="member.position < 4">
+                  <div class="quiz-medal">
+                    <div class="quiz-medal__circle quiz-medal__circle{{ member.position == 1 ? '--gold' : member.position == 2 ? '--silver' : member.position == 3 ? '--bronze' : '' }}">
+                          <span>
+                            {{member.position}}
+                          </span>
+                    </div>
+                    <div class="quiz-medal__ribbon quiz-medal__ribbon--left"></div>
+                    <div class="quiz-medal__ribbon quiz-medal__ribbon--right"></div>
+                  </div>
                 </ng-container>
               </div>
               <div [style.width]="calculateLevelWidth(member) + '%'" class="line" [ngClass]="{'first-bg': member.position == 1, 'second-bg': member.position == 2, 'third-bg': member.position == 3,
