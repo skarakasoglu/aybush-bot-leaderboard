@@ -22,7 +22,7 @@ export class LeaderboardMember{
     let hours = Math.floor(this.activeVoiceMinutes / 60);
     let minutes = Math.floor(this.activeVoiceMinutes % 60 / 6);
 
-    str = `${hours}.${minutes} saat`;
+    str = `${hours}.${minutes}`;
 
     return str;
   }

@@ -1,41 +1,50 @@
-<div class="container justify-content-center mt-3">
-  <div class="card shadow col-12 bg-dark text-white">
-    <div class="card-body">
-      <table>
-        <thead>
-          <tr>
-            <th>Sıra</th>
-            <th>Avatar</th>
-            <th>Kullanıcı Adı</th>
-            <th class="text-center">Mesaj Sayısı</th>
-            <th class="text-center">Seste Geçirilen Süre</th>
-            <th class="text-center">Seviye</th>
-            <th class="text-center">Tecrübe Puanı</th>
-          </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let member of members">
-          <td class="col-1"> <span class="position" [ngClass]="{'first': member.position == 1, 'second': member.position == 2, 'third': member.position == 3}">{{ member.position }}</span> </td>
-          <td class="col-1 justify-content-center align-items-center"> <img src="{{member.avatarUrl}}" /> </td>
-          <td class="col-3">{{ member.username }}#{{ member.discriminator }}</td>
-          <td class="col-2 text-center">{{ member.getMessageCountString() }}</td>
-          <td class="col-2 text-center">{{ member.getHourString() }}</td>
-          <td class="col-1 justify-content-center">
-            <div class="percent">
-              <svg>
-                <circle class="circle-bg"
-                  [attr.cx]="this.size / 2" [attr.cy]="this.size / 2" [attr.r]="this.radius" stroke="white" [attr.stroke-width]="this.strokeWidth" fill="transparent"></circle>
-                <circle class="circle" stroke="#8B7BFF" [attr.stroke-dasharray]="this.circumference" [attr.stroke-dashoffset]="calculateProgress(member)"
-                        [attr.cx]="this.size / 2" [attr.cy]="this.size / 2" [attr.r]="this.radius" [attr.stroke-width]="this.strokeWidth" fill="transparent"></circle>
+<div class="container d-flex justify-content-center">
+  <div class="content">
+    <div class="leaderboard d-flex justify-content-center">
+      <div class="users" [style.height]="(members.length * 85) + 'px'">
 
-                <text class="level" [attr.x]="this.size / 2" [attr.y]="this.size / 2">{{ member.currentLevel.level }}</text>
+        <div class="user" *ngFor="let member of members">
+          <div class="row">
+            <div class="photo d-flex justify-content-start col-1">
+              <img src="{{ member.avatarUrl }}" alt="">
+            </div>
+            <div class="moreData col-4">
+              <div class="row data">
+                <div class="col-12 username">
+                  <h5> <span class="badg" [ngClass]="{'first': member.position == 1, 'second': member.position == 2, 'third': member.position == 3,
+                  'normal': member.position != 1 && member.position != 2 && member.position != 3}">{{ member.position }}.</span> {{member.username}}#{{member.discriminator}}</h5>
+                </div>
+              </div>
+              <div style="width: {{calculateLevelWidth(member) + '%'}};" class="line" [ngClass]="{'first-bg': member.position == 1, 'second-bg': member.position == 2, 'third-bg': member.position == 3,
+              'normal-bg': member.position != 1 && member.position != 2 && member.position != 3}"></div>
+            </div>
+            <div class="level col">
+              <svg class="tpChart">
+                <circle stroke="#293049" fill="transparent" class="circle-bg"
+                        [attr.cx]="size / 2" [attr.cy]="size/2" [attr.r]="radius" [attr.stroke-width]="strokeWidth"></circle>
+                <circle stroke="#74ebd5" fill="transparent" class="circle"
+                        [attr.cx]="size/2" [attr.cy]="size/2" [attr.r]="radius" [attr.stroke-width]="strokeWidth"
+                        [attr.stroke-dasharray]="circumference" [attr.stroke-dashoffset]="calculateProgress(member)"></circle>
+                <text  class="levelText" x="27" y="40">{{ member.currentLevel.level }}</text>
               </svg>
             </div>
-          </td>
-          <td class="col-2 text-center">{{ member.getExperiencePointString() }}</td>
-        </tr>
-        </tbody>
-      </table>
+            <div class="soundDuration text time col pad">
+              <div><h6><span class="mainText">{{ member.getHourString() }}</span></h6></div>
+              <div class="alt"><h6>saat</h6></div>
+            </div>
+            <div class="numberOfMessages text col messages pad">
+              <div><h6><span class="mainText">{{ member.getMessageCountString() }}</span></h6></div>
+              <div class="alt"><h6>mesaj</h6></div>
+            </div>
+            <div class="tp text col tpText pad">
+              <div><h6><span class="mainText">{{ member.getExperiencePointString() }}</span></h6></div>
+              <div class="alt"><h6>tp</h6></div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
     </div>
   </div>
 </div>

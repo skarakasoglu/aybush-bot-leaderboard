@@ -15,13 +15,14 @@ export class LeaderboardComponent implements OnInit {
   radius: number;
   circumference: number;
 
+  firstMember: LeaderboardMember;
   members: LeaderboardMember[] = [];
 
   constructor(private leaderboardService: LeaderboardService) {
   }
 
   ngOnInit(): void {
-    this.radius = this.size / 2 - this.strokeWidth / 2;
+    this.radius = 25;
     this.circumference = Math.PI * 2 * this.radius;
 
     this.leaderboardService.getLeaderboard().subscribe((observer : any) => {
@@ -31,6 +32,10 @@ export class LeaderboardComponent implements OnInit {
           ml.joined_at, new Level(ml.current_level.level, ml.current_level.required_experience_points),
           new Level(ml.next_level.level, ml.next_level.required_experience_points),
           ml.experience_points, ml.role_name, ml.position);
+        if (member.position == 1) {
+          this.firstMember = member;
+        }
+
         this.members.push(member);
       });
 
@@ -46,5 +51,10 @@ export class LeaderboardComponent implements OnInit {
 
     return ((100 - memberProgressPercentage) / 100) * this.circumference;
   }
+
+  calculateLevelWidth(member: LeaderboardMember): number{
+    return (member.experiencePoints / this.firstMember.experiencePoints) * 100;
+  }
+
 
 }

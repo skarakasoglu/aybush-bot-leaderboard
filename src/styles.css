@@ -4,8 +4,6 @@
 
 body{
   font-family: 'Montserrat', sans-serif !important;
-}
-
-.bg {
-  background-color: #2F3036;
+  background: linear-gradient(to right, #FF512F 0%, #DD2476 100%);
+  color: rgb(196, 196, 196);
 }
