@@ -31,8 +31,8 @@ export class LeaderboardMember{
     let shortString = "";
 
     if (number > 1000) {
-      let hundred = Math.floor((this.experiencePoints % 1000) / 100);
-      let thousand = Math.floor(this.experiencePoints / 1000);
+      let hundred = Math.floor((number % 1000) / 100);
+      let thousand = Math.floor(number / 1000);
 
       shortString = `${thousand}.${hundred}k`
     } else {
