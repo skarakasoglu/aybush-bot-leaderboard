@@ -29,7 +29,7 @@ export class LeaderboardComponent implements OnInit {
     {'value': 1, 'name': 'mesaj', 'key': 'messageCount'},
     {'value': 2, 'name': 'saat', 'key': 'activeVoiceMinutes'},
   ]
-  selectedOrderCriterion = {'value': -1, 'name': ''};
+  selectedOrderCriterion = {'value': -1, 'name': '', 'key': ''};
 
   episodes: Episode[] = [];
   selectedEpisode: Episode;
@@ -59,8 +59,14 @@ export class LeaderboardComponent implements OnInit {
     this.updateLeaderboard(this.selectedEpisode.id, this.selectedOrderCriterion.value);
   }
 
+  updateAll() {
+    this.getEpisodes();
+  }
+
   getEpisodes() {
     this.leaderboardService.getEpisodes().subscribe((observer: any) => {
+      this.episodes = [];
+
       observer.episodes.forEach(eps => {
         let episode = new Episode(eps.id, eps.name, eps.start_timestamp, eps.end_timestamp);
         this.episodes.push(episode);
