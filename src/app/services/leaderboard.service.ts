@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {LeaderboardMember} from "../models/leaderboard-member";
-import {Level} from "../models/level";
+import {Constants} from "../config/constants";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LeaderboardService {
 
-  private API_URL = "https://api.aybushbot.com/v1/leaderboard";
+  constructor(private httpClient: HttpClient, private constants: Constants) { }
 
-  constructor(private httpClient: HttpClient) { }
+  getEpisodes() : Observable<any> {
+    return this.httpClient.get(`${this.constants.BASE_API_URL}/${this.constants.API_VER}/${this.constants.EPISODE_ENDPOINT}`);
+  }
 
+  getEpisodeLeaderboard(episode: number, order: number) : Observable<any> {
+    return this.httpClient.get(`${this.constants.BASE_API_URL}/${this.constants.API_VER}/${this.constants.LEADERBOARD_ENDPOINT}?episode=${episode}&order=${order}`)
+  }
+
+  //DEPRECATED
   getLeaderboard() : Observable<any> {
-    return this.httpClient.get(this.API_URL);
+    return this.httpClient.get(`${this.constants.BASE_API_URL}/${this.constants.API_VER}/${this.constants.LEADERBOARD_ENDPOINT}`);
   }
 }

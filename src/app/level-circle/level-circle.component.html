@@ -1,0 +1,11 @@
+<svg>
+  <circle stroke="#293049" fill="transparent" class="circle-bg"
+          [attr.cx]="size / 2" [attr.cy]="size/2" [attr.r]="radius" [attr.stroke-width]="strokeWidth"></circle>
+  <circle stroke="#74ebd5" fill="transparent" class="circle"
+          [attr.cx]="size/2" [attr.cy]="size/2" [attr.r]="radius" [attr.stroke-width]="strokeWidth"
+          [attr.stroke-dasharray]="circumference" [attr.stroke-dashoffset]="calculateProgress()"></circle>
+  <text fill="#74ebd5" x="0" y="0">
+    <tspan [attr.x]="member.currentLevel.level < 10 ? 30 : 27" y="30">{{ member.currentLevel.level + '.' }}</tspan>
+    <tspan class="alt" x="12" y="50">seviye</tspan>
+  </text>
+</svg>

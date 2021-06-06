@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body{
-  font-family: 'Montserrat', sans-serif !important;
   background: linear-gradient(to right, #FF512F 0%, #DD2476 100%);
-  color: rgb(196, 196, 196);
+  font-family: Montserrat,sans-serif!important;
+  color: #fff;
 }

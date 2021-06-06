@@ -1,0 +1,42 @@
+<div class="user-info" [style]="{'left': positionX + 'px', 'top': positionY + 'px'}">
+<div class="top">
+  <div class="bg" [ngClass]="{'first-bar': member.position == 1, 'second-bar': member.position == 2, 'third-bar': member.position == 3 }">
+    <div class="person-info">
+      <div class="avatar-info">
+        <img [src]="member.avatarUrl" alt="" />
+      </div>
+      <div class="username-info">
+        <h5>{{ member.username }}<span>#{{ member.discriminator }}</span></h5>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="data-titles"></div>
+  <div class="result">
+    <div class="top-info">
+      <div class="level left">
+        <div class="tp-chart-info">
+          <app-level-circle [member]="member" [strokeWidth]="3" [size]="60"></app-level-circle>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="row data">
+        <div class="col-6 tp-text">
+          <b>{{ member.getExperiencePointString() }}</b>
+          <span> tp</span>
+        </div>
+        <div class="col-6 time">
+          <b>{{ member.getHourString() }}</b>
+          <span> saat</span>
+        </div>
+      </div>
+      <div class="row data">
+        <div class="col-6 messages">
+          <b>{{ member.getMessageCountString() }}</b>
+          <span> mesaj</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

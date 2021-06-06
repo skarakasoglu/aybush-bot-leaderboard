@@ -1,0 +1,39 @@
+<div class="row user" [ngClass]="{'first': member.position == 1, 'second': member.position == 2, 'third': member.position == 3,
+                  'normal': member.position != 1 && member.position != 2 && member.position != 3}">
+  <div class="avatar d-flex justify-content-center col-1">
+    <img (click)="showUserInfo($event, member)" src="{{ member.avatarUrl }}" alt="">
+  </div>
+  <div class="mid col-4">
+    <div class="username" (click)="showUserInfo($event, member)">
+                  <span>
+                  <span class="position" [ngClass]="{'firstT': member.position == 1, 'secondT': member.position == 2, 'thirdT': member.position == 3,
+                  'normal': member.position != 1 && member.position != 2 && member.position != 3}">{{ member.position }}. </span><span>{{member.username}}</span>#<span class="tag">{{member.discriminator}}</span>
+                  </span>
+    </div>
+    <div [style.width]="calculateLevelWidth() + '%'" class="bar" [ngClass]="{'firstBar': member.position == 1, 'secondBar': member.position == 2, 'thirdBar': member.position == 3,
+              'normal-bg': member.position != 1 && member.position != 2 && member.position != 3}"></div>
+  </div>
+  <div class="d-flex justify-content-center col">
+    <div class="tpChart">
+      <app-level-circle [size]="size" [strokeWidth]="strokeWidth" [member]="member"></app-level-circle>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center messages col">
+    <div class="inbox">
+      <h5>{{ member.getMessageCountString() }}</h5>
+      <span class="subt">mesaj</span>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center time col">
+    <div class="inbox">
+      <h5>{{ member.getHourString() }}</h5>
+      <span class="subt">saat</span>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center tpText col">
+    <div class="inbox">
+      <h5>{{ member.getExperiencePointString() }}</h5>
+      <span class="subt">tp</span>
+    </div>
+  </div>
+</div>

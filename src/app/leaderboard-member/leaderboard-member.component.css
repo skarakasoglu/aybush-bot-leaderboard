@@ -1,0 +1,113 @@
+.user {
+  height: 80px;
+  margin-bottom:10px;
+}
+.avatar img {
+  margin-top: 15px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.avatar img:hover{
+  cursor: pointer;
+  height: 55px;
+  margin-top: 12.5px;
+}
+.first img{
+  box-shadow: 0px 0px 10px 2px #ffd000;
+}
+
+.second img{
+  box-shadow: 0px 0px 10px 2px white;
+}
+
+.third img {
+  box-shadow: 0px 0px 10px 2px rgb(255, 103, 15);
+}
+
+.mid {
+  padding-top: 12px;
+  padding-bottom: 10px;
+}
+.username{
+  margin-left:18px;
+  margin-bottom: 5px;
+  font-weight: 400;
+  height:36px ;
+  width: 80%;
+}
+
+.username span {
+  cursor: pointer;
+}
+
+.tag{
+  font-size: 12px;
+  color: rgb(209, 209, 209);
+}
+.bar{
+  margin-left: 10px;
+  height: 3px;
+  background: linear-gradient(to right, #74ebd5 0%, #ACB6E5 100%);
+}
+
+.firstBar {
+  background: linear-gradient(to right, #F09819 0%, #EDDE5D 100%);
+}
+
+.secondBar {
+  background: linear-gradient(to right, #403B4A 0%, #E7E9BB 100%);
+}
+
+.thirdBar {
+  background: linear-gradient(to right, #603813 0%, #b29f94 100%);
+}
+
+.time {
+  background: -webkit-linear-gradient(#D4342C, #F57E63);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.tpText {
+  background: -webkit-linear-gradient(#FFB75E, #be7200);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.messages {
+  background: -webkit-linear-gradient(#77e8ff, #03a59d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.inbox{
+  margin-top:15px;
+}
+
+.subt {
+  margin-top: -10px;
+  float: left;
+  font-size: 14px;
+}
+
+.position{
+  font-size: 20px;
+  color:#FE5033;
+}
+.firstT{
+  color:#EDDE5D ;
+}
+
+.secondT{
+  color: #ffffff;
+}
+
+.thirdT{
+  color: #c06f23;
+}
+
+.tpChart{
+  width: 80px;
+  height: 80px;
+}

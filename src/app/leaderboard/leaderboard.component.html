@@ -1,65 +1,50 @@
-<div class="container d-flex justify-content-center">
-  <div class="content">
-    <div class="leaderboard d-flex justify-content-center">
-      <div class="users" [style.height]="(members.length * 90) + 'px'">
-
-        <div class="user" *ngFor="let member of members">
+  <div class="leaderboard">
+    <app-user-info *ngIf="selectedMember" [member]="selectedMember" [positionX]="memberInfoX" [positionY]="memberInfoY"></app-user-info>
+    <div class="loading d-flex justify-content-center" *ngIf="loading">
+      <img src="assets/loading.svg" alt="loading..." />
+    </div>
+    <div class="ignore" *ngIf="!loading">
+      <div (click)="closeMemberInfo()" class="allUIP" *ngIf="selectedMember"></div>
+      <div class="users" [ngClass]="{'user-info-back': selectedMember}" >
+        <div class="more">
           <div class="row">
-            <div class="photo d-flex justify-content-start col-1">
-              <img src="{{ member.avatarUrl }}" alt="">
+            <div class="d-flex justify-content-center col-1">
+              <img (click)="updateLeaderboard(selectedEpisode.id, selectedOrderCriterion.value)" class="icon" src="assets/refreshing.svg" alt="" />
             </div>
-            <div class="moreData col-4">
-              <div class="row data flex-row justify-content-start" style="margin-left: 0">
-                <div style="width: 90%" class="col-12 username">
-                  <h5> <span class="badg" [ngClass]="{'first': member.position == 1, 'second': member.position == 2, 'third': member.position == 3,
-                  'normal': member.position != 1 && member.position != 2 && member.position != 3}">{{ member.position }}.</span> {{member.username}}#{{member.discriminator}}
-                  </h5>
-                </div>
-                <ng-container *ngIf="member.position < 4">
-                  <div class="quiz-medal">
-                    <div class="quiz-medal__circle quiz-medal__circle{{ member.position == 1 ? '--gold' : member.position == 2 ? '--silver' : member.position == 3 ? '--bronze' : '' }}">
-                          <span>
-                            {{member.position}}
-                          </span>
+            <div class="col-11 criter-options">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-end criters-up">
+                  <div class="criteria">
+                    <div *ngFor="let criterion of orderByCriteria"
+                         (click)="changeSelectedOrderCriterion(criterion)"
+                         [ngClass]="{'selected-criterion': selectedOrderCriterion.value == criterion.value }"
+                         class="criterion">
+                      <span>{{ criterion.name.toLowerCase() }}</span>
                     </div>
-                    <div class="quiz-medal__ribbon quiz-medal__ribbon--left"></div>
-                    <div class="quiz-medal__ribbon quiz-medal__ribbon--right"></div>
                   </div>
-                </ng-container>
+                  <div class="criteria">
+                    <div *ngFor="let episode of episodes"
+                         (click)="changeSelectedEpisode(episode)"
+                         [ngClass]="{'selected-criterion': episode.id == selectedEpisode.id }"
+                         class="criterion">
+                      <span>{{ episode.name.toLowerCase() }}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div [style.width]="calculateLevelWidth(member) + '%'" class="line" [ngClass]="{'first-bg': member.position == 1, 'second-bg': member.position == 2, 'third-bg': member.position == 3,
-              'normal-bg': member.position != 1 && member.position != 2 && member.position != 3}"></div>
-            </div>
-            <div class="level col">
-              <svg class="tpChart">
-                <circle stroke="#293049" fill="transparent" class="circle-bg"
-                        [attr.cx]="size / 2" [attr.cy]="size/2" [attr.r]="radius" [attr.stroke-width]="strokeWidth"></circle>
-                <circle stroke="#74ebd5" fill="transparent" class="circle"
-                        [attr.cx]="size/2" [attr.cy]="size/2" [attr.r]="radius" [attr.stroke-width]="strokeWidth"
-                        [attr.stroke-dasharray]="circumference" [attr.stroke-dashoffset]="calculateProgress(member)"></circle>
-                <text  class="levelText" x="0" y="0">
-                  <tspan [attr.x]="member.currentLevel.level < 10 ? 30 : 27" y="30">{{ member.currentLevel.level + '.' }}</tspan>
-                  <tspan class="alt" x="12" y="50">seviye</tspan>
-                </text>
-              </svg>
-            </div>
-            <div class="soundDuration text time col pad">
-              <div><h6><span class="mainText">{{ member.getHourString() }}</span></h6></div>
-              <div class="alt"><h6>saat</h6></div>
-            </div>
-            <div class="numberOfMessages text col messages pad">
-              <div><h6><span class="mainText">{{ member.getMessageCountString() }}</span></h6></div>
-              <div class="alt"><h6>mesaj</h6></div>
-            </div>
-            <div class="tp text col tpText pad">
-              <div><h6><span class="mainText">{{ member.getExperiencePointString() }}</span></h6></div>
-              <div class="alt"><h6>tp</h6></div>
             </div>
           </div>
+
         </div>
-
-
+          <app-leaderboard-member *ngFor="let leaderboardMember of members"
+                                  [selectedOrderCriterion]="selectedOrderCriterion"
+                                  [firstMember]="firstMember"
+                                  [showUserInfo]="showUserInfo"
+                                  [circumference]="circumference"
+                                  [radius]="radius"
+                                  [size]="size"
+                                  [strokeWidth]="strokeWidth"
+                                  [member]="leaderboardMember"></app-leaderboard-member>
       </div>
     </div>
   </div>
-</div>

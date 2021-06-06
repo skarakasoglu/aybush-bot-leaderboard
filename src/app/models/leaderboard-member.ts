@@ -17,24 +17,14 @@ export class LeaderboardMember{
   }
 
   getHourString(): string{
-    let str = "";
-
-    let hours = Math.floor(this.activeVoiceMinutes / 60);
-    let minutes = Math.floor(this.activeVoiceMinutes % 60 / 6);
-
-    str = `${hours}.${minutes}`;
-
-    return str;
+    return (this.activeVoiceMinutes / 60).toFixed(1);
   }
 
   getShortString(number: number): string{
     let shortString = "";
 
     if (number > 1000) {
-      let hundred = Math.floor((this.experiencePoints % 1000) / 100);
-      let thousand = Math.floor(this.experiencePoints / 1000);
-
-      shortString = `${thousand}.${hundred}k`
+      shortString = `${(number / 1000).toFixed(1)}k`
     } else {
       shortString = number.toString();
     }
